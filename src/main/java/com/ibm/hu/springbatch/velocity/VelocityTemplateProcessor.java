@@ -7,6 +7,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.springframework.batch.item.ItemProcessor;
 
 import java.io.StringWriter;
+import java.util.Collections;
 import java.util.Map;
 
 public class VelocityTemplateProcessor implements ItemProcessor {
@@ -23,6 +24,13 @@ public class VelocityTemplateProcessor implements ItemProcessor {
         velocityContext = new VelocityContext();
     }
 
+    public Object process(Object o) {
+        setFields(((Map<String, Object>) o));
+        StringWriter writer = new StringWriter();
+        template.merge(velocityContext, writer);
+        return writer.toString();
+    }
+
     public void setTemplate(String templateName,String encoding) {
         template = velocityEngine.getTemplate(templateName,encoding);
     }
@@ -37,10 +45,17 @@ public class VelocityTemplateProcessor implements ItemProcessor {
         }
     }
 
-    public Object process(Object o) throws Exception {
-            setFields((Map<String, Object>) o);
-            StringWriter writer = new StringWriter();
-            template.merge(velocityContext, writer);
-            return writer.toString();
+    public VelocityEngine getVelocityEngine() {
+        return velocityEngine;
     }
+
+
+    public VelocityContext getVelocityContext() {
+        return velocityContext;
+    }
+
+    public Template getTemplate() {
+        return template;
+    }
+
 }
