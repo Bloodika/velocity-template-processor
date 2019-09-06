@@ -1,4 +1,4 @@
-package com.ibm.hu.springbatch.velocity;
+package com.ibm.hu.spring.batch.velocity;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;

@@ -1,6 +1,6 @@
-package com.ibm.hu.springbatch.velocity.test;
+package com.ibm.hu.spring.batch.velocity.test;
 
-import com.ibm.hu.springbatch.velocity.VelocityTemplateProcessor;
+import com.ibm.hu.spring.batch.velocity.VelocityTemplateProcessor;
 import org.apache.velocity.VelocityContext;
 import org.junit.Assert;
 import org.junit.Before;
